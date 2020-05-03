@@ -1,5 +1,8 @@
 webpack.*.js
 node_modules/
 src/
+page/
+public/
 package-lock.json
 tsconfig.json
+svelte.config.js

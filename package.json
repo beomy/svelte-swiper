@@ -5,8 +5,8 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "build:page": "cross-env NODE_ENV=production webpack --config webpack.page.config.js",
-    "page": "webpack-dev-server --content-base public --config webpack.page.config.js",
+    "build:docs": "cross-env NODE_ENV=production webpack --config webpack.docs.config.js",
+    "docs": "webpack-dev-server --content-base public --config webpack.docs.config.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
