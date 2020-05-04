@@ -16,54 +16,60 @@ import CenteredAuto from './components/CenteredAuto.svelte'
 import CssMode from './components/CssMode.svelte'
 import FreeMode from './components/FreeMode.svelte'
 import ScrollContainer from './components/ScrollContainer.svelte'
+import SlidesPerColumn from './components/SlidesPerColumn.svelte'
+import Nested from './components/Nested.svelte'
+import GrabCursor from './components/GrabCursor.svelte'
+import InfiniteLoop from './components/InfiniteLoop.svelte'
+import InfiniteLoopWithSlidesPerGroup from './components/InfiniteLoopWithSlidesPerGroup.svelte'
+import EffectFade from './components/EffectFade.svelte'
 
 const components = [
-  { comp: Default, className: 'Default', title: 'Default Setup' },
-  { comp: Navigation, className: 'Navigation', title: 'Navigation' },
-  { comp: Pagination, className: 'Pagination', title: 'Pagination' },
-  { comp: PaginationDynamic, className: 'PaginationDynamic', title: 'Pagination / Dynamic Bullets' },
-  { comp: PaginationProgress, className: 'PaginationProgress', title: 'Progress Pagination' },
-  { comp: PaginationFraction, className: 'PaginationFraction', title: 'Fraction Pagination' },
-  { comp: Scrollbar, className: 'Scrollbar', title: 'Scrollbar' },
-  { comp: Vertical, className: 'Vertical', title: 'Vertical Slider' },
-  { comp: SpaceBetween, className: 'SpaceBetween', title: 'Space Between Slides' },
-  { comp: SlidePerView, className: 'SlidePerView', title: 'Multiple Slides Per View' },
-  { comp: SlidePerViewAuto, className: 'SlidePerViewAuto', title: 'Auto Slides Per View / Carousel Mode' },
-  { comp: Centered, className: 'Centered', title: 'Centered Slides' },
-  { comp: CssMode, className: 'CssMode', title: 'CSS Scroll Snap (CSS Mode)' },
-  { comp: FreeMode, className: 'FreeMode', title: 'Free Mode / No Fixed Positions' },
-  { comp: ScrollContainer, className: 'ScrollContainer', title: 'Scroll Container' },
+  { comp: Default, title: 'Default Setup' },
+  { comp: Navigation, title: 'Navigation' },
+  { comp: Pagination, title: 'Pagination' },
+  { comp: PaginationDynamic, title: 'Pagination / Dynamic Bullets' },
+  { comp: PaginationProgress, title: 'Progress Pagination' },
+  { comp: PaginationFraction, title: 'Fraction Pagination' },
+  { comp: Scrollbar, title: 'Scrollbar' },
+  { comp: Vertical, title: 'Vertical Slider' },
+  { comp: SpaceBetween, title: 'Space Between Slides' },
+  { comp: SlidePerView, title: 'Multiple Slides Per View' },
+  { comp: SlidePerViewAuto, title: 'Auto Slides Per View / Carousel Mode' },
+  { comp: Centered, title: 'Centered Slides' },
+  { comp: CenteredAuto, title: 'Centered Slides + Auto Slides Per View' },
+  { comp: CssMode, title: 'CSS Scroll Snap (CSS Mode)' },
+  { comp: FreeMode, title: 'Free Mode / No Fixed Positions' },
+  { comp: ScrollContainer, title: 'Scroll Container' },
+  { comp: SlidesPerColumn, title: 'Multi Row Slides Layout' },
+  { comp: Nested, title: 'Nested Swipers' },
+  { comp: GrabCursor, title: 'Grab Cursor' },
+  { comp: InfiniteLoop, title: 'Loop Mode / Infinite Loop' },
+  { comp: InfiniteLoopWithSlidesPerGroup, title: 'Loop Mode with Multiple Slides Per Group' },
+  { comp: EffectFade, title: 'Fade Effect' },
 ]
 </script>
 
-{#each components as { comp, href, className, title } (className)}
+{#each components as { comp, title } (comp.name)}
 <div class="example-conatiner">
   <h1>{title}</h1>
-  <a href={`https://github.com/beomy/svelte-swiper/blob/master/components/${className}.svelte`} target="_blank">Souce code</a>
+  <a href={`https://github.com/beomy/svelte-swiper/blob/master/components/${comp.name}.svelte`} target="_blank">Souce code</a>
   <div class="example">
-    <svelte:component this={comp} {className} />
+    <svelte:component this={comp} />
   </div>
 </div>
 {/each}
 
-<style lang="scss" global>
+<style global>
   .example {
     height: 400px;
     border: 1px solid #aaa;
     margin-bottom: 40px;
+    background: #eee;
+  }
 
-    > div {
-      width: 100%;
-      height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      overflow: hidden;
-      list-style: none;
-      padding: 0;
-      z-index: 1;
-      background: #eee;
-    }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
   }
 
   .swiper-slide {

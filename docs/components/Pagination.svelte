@@ -1,6 +1,5 @@
 <script>
 import { Swiper, SwiperSlide } from '../../src';
-export let className;
 
 const options = {
   pagination: {
@@ -9,7 +8,7 @@ const options = {
 }
 </script>
 
-<Swiper {className} {options}>
+<Swiper {options}>
   <SwiperSlide>Slide 1</SwiperSlide>
   <SwiperSlide>Slide 2</SwiperSlide>
   <SwiperSlide>Slide 3</SwiperSlide>
