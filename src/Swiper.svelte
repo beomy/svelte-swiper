@@ -61,7 +61,7 @@
 
   function destroySwiper () {
     if (autoDestroy && swiper && swiper.destroy) {
-      swiper.destroy(deleteInstanceOnDestroy, cleanupStylesOnDestroy)
+      swiper.destroy(deleteInstanceOnDestroy, cleanupStylesOnDestroy);
     }
   }
 
@@ -80,7 +80,7 @@
   });
   onDestroy(() => {
     destroySwiper()
-  })
+  });
 </script>
 
 <div
