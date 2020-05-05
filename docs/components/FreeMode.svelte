@@ -1,5 +1,5 @@
 <script>
-import { Swiper, SwiperSlide } from '../../src';
+import { Swiper, SwiperSlide } from '../../dist/bundle';
 
 const options = {
   slidesPerView: 3,

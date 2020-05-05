@@ -1,6 +1,6 @@
 <script>
-import { onMount } from 'svelte'
-import { Swiper, SwiperSlide } from '../../src';
+import { onMount, tick } from 'svelte'
+import { Swiper, SwiperSlide } from '../../dist/bundle';
 
 let swiperTop;
 let swiperThumbs;
@@ -21,13 +21,14 @@ const thumbOptions = {
   watchSlidesProgress: true,
 }
 
-onMount(() => {
+onMount(async () => {
+  await tick()
   swiperTop.thumbs.swiper = swiperThumbs
 })
 </script>
 
 <div class="thumbs-gallery">
-  <Swiper bind:swiper={swiperTop} className="gallery-top" options={topOptions}>
+  <Swiper bind:swiper={swiperTop} className="gallery-top" options={topOptions} thumbs={swiperThumbs}>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-1.jpg)"></SwiperSlide>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-2.jpg)"></SwiperSlide>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-3.jpg)"></SwiperSlide>
