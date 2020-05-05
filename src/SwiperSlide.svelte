@@ -10,7 +10,7 @@
   export let hash: string|null = null;
   export let history: string|null = null;
 
-  const context = getContext(key)
+  const context = getContext(key);
   const options: SwiperOptions = context.options;
   const slideClass: string = options.slideClass || DEFAULT_CLASSES.slideClass;
   let classes: string;
@@ -23,16 +23,16 @@
   $: styles = typeof style === 'string' ? style : getStyles(style);
 
   function update () {
-    const swiper: Swiper|null = context.getSwiper()
-    const autoUpdate = context.autoUpdate
+    const swiper: Swiper|null = context.getSwiper();
+    const autoUpdate = context.autoUpdate;
     if (autoUpdate && swiper) {
-      swiper.update()
+      swiper.update();
     }
   }
 
   afterUpdate(() => {
-    update()
-  })
+    update();
+  });
 </script>
 
 <div

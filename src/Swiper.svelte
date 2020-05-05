@@ -71,7 +71,7 @@
     getSwiper: () => swiper
   });
   afterUpdate(() => {
-    updateSwiper()
+    updateSwiper();
   });
   onMount(async () => {
     await tick();
@@ -79,7 +79,7 @@
     bindSwiperEvents();
   });
   onDestroy(() => {
-    destroySwiper()
+    destroySwiper();
   });
 </script>
 
