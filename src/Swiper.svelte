@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, afterUpdate, setContext, createEventDispatcher } from 'svelte';
+  import { onMount, afterUpdate, onDestroy, tick, setContext, createEventDispatcher } from 'svelte';
   import Swiper, { SwiperOptions } from 'swiper';
   import { key } from './context';
   import { getStyles } from './utils';
@@ -9,8 +9,11 @@
   export let swiper: Swiper|null = null;
   export let className: string|string[] = '';
   export let style: string|object = '';
-  export let autoUpdate: boolean = true;
   export let dir: string|null = null;
+  export let autoUpdate: boolean = true;
+  export let autoDestroy: boolean = true;
+  export let deleteInstanceOnDestroy: boolean = true;
+  export let cleanupStylesOnDestroy: boolean = true;
 
   const wrapperClass: string = options.wrapperClass || DEFAULT_CLASSES.wrapperClass;
   const dispatch = createEventDispatcher();
@@ -25,14 +28,15 @@
   $: styles = typeof style === 'string' ? style : getStyles(style);
 
   $: {
-    if (swiper && swiper.thumbs && swiper.thumbs.swiper) {
+    const instance = swiper as any
+    if (instance && instance.thumbs && instance.thumbs.swiper) {
       updateSwiper();
     }
   }
 
   function bindSwiperEvents () {
     for (const eventName of SWIPER_EVENTS) {
-      swiper.on(eventName, (...params) => {
+      (swiper as any).on(eventName, (...params: any) => {
         dispatch(eventName, params);
       });
     }
@@ -55,6 +59,12 @@
     }
   }
 
+  function destroySwiper () {
+    if (autoDestroy && swiper && swiper.destroy) {
+      swiper.destroy(deleteInstanceOnDestroy, cleanupStylesOnDestroy)
+    }
+  }
+
   setContext(key, {
     options,
     autoUpdate,
@@ -62,11 +72,15 @@
   });
   afterUpdate(() => {
     updateSwiper()
-  })
-  onMount(() => {
+  });
+  onMount(async () => {
+    await tick();
     swiper = new Swiper(el, options);
     bindSwiperEvents();
   });
+  onDestroy(() => {
+    destroySwiper()
+  })
 </script>
 
 <div
