@@ -1,3 +1,4 @@
+const path = require('path');
 const config = require('./svelte.config')
 
 const mode = process.env.NODE_ENV || 'development';
@@ -5,6 +6,13 @@ const prod = mode === 'production';
 
 module.exports = {
   entry:'./src/index.ts',
+  resolve: {
+    alias: {
+      svelte: path.resolve('node_modules', 'svelte')
+    },
+    extensions: ['.mjs', '.js', '.svelte', '.tsx', '.ts'],
+    mainFields: ['svelte', 'browser', 'module', 'main']
+  },
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js',
