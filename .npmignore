@@ -1,7 +1,7 @@
 webpack.*.js
 node_modules/
 src/
-page/
+docs/
 public/
 package-lock.json
 tsconfig.json

@@ -1,16 +1,19 @@
 <script lang="ts">
-  import { onMount, setContext } from 'svelte';
+  import { onMount, afterUpdate, setContext, createEventDispatcher } from 'svelte';
   import Swiper, { SwiperOptions } from 'swiper';
   import { key } from './context';
   import { getStyles } from './utils';
-  import { DEFAULT_CLASSES } from './constants';
+  import { DEFAULT_CLASSES, SWIPER_EVENTS } from './constants';
 
   export let options: SwiperOptions = {};
-  export let swiper: any = null;
+  export let swiper: Swiper|null = null;
   export let className: string|string[] = '';
   export let style: string|object = '';
+  export let autoUpdate: boolean = true;
+  export let dir: string|null = null;
 
   const wrapperClass: string = options.wrapperClass || DEFAULT_CLASSES.wrapperClass;
+  const dispatch = createEventDispatcher();
   let el: HTMLElement;
   let classes: string;
   let styles: string;
@@ -21,9 +24,48 @@
 
   $: styles = typeof style === 'string' ? style : getStyles(style);
 
-  setContext(key, { options });
+  $: {
+    if (swiper && swiper.thumbs && swiper.thumbs.swiper) {
+      updateSwiper();
+    }
+  }
+
+  function bindSwiperEvents () {
+    for (const eventName of SWIPER_EVENTS) {
+      swiper.on(eventName, (...params) => {
+        dispatch(eventName, params);
+      });
+    }
+  }
+
+  function updateSwiper () {
+    if (autoUpdate && swiper) {
+      swiper.update();
+      if (swiper.navigation && swiper.navigation.update) {
+        swiper.navigation.update();
+      }
+      if (swiper.pagination) {
+        if (swiper.pagination.render) {
+          swiper.pagination.render();
+        }
+        if (swiper.pagination.update) {
+          swiper.pagination.update();
+        }
+      }
+    }
+  }
+
+  setContext(key, {
+    options,
+    autoUpdate,
+    getSwiper: () => swiper
+  });
+  afterUpdate(() => {
+    updateSwiper()
+  })
   onMount(() => {
     swiper = new Swiper(el, options);
+    bindSwiperEvents();
   });
 </script>
 
@@ -31,7 +73,9 @@
   bind:this={el}
   class={classes}
   style={styles || null}
+  {dir}
 >
+  <slot name="parallax-bg"></slot>
   <div class={wrapperClass}>
     <slot></slot>
   </div>
