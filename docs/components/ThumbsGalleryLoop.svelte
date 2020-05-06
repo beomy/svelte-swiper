@@ -1,5 +1,5 @@
 <script>
-import { onMount } from 'svelte'
+import { onMount, tick } from 'svelte'
 import { Swiper, SwiperSlide } from '../../dist/bundle';
 
 let swiperTop;
@@ -24,14 +24,10 @@ const thumbOptions = {
   watchSlidesVisibility: true,
   watchSlidesProgress: true,
 }
-
-onMount(() => {
-  swiperTop.thumbs.swiper = swiperThumbs
-})
 </script>
 
 <div class="thumbs-gallery">
-  <Swiper bind:swiper={swiperTop} className="gallery-top" options={topOptions}>
+  <Swiper bind:swiper={swiperTop} className="gallery-top" options={topOptions} thumbs={swiperThumbs}>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-1.jpg)"></SwiperSlide>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-2.jpg)"></SwiperSlide>
     <SwiperSlide style="background-image:url(https://swiperjs.com/demos/images/nature-3.jpg)"></SwiperSlide>

@@ -20,11 +20,6 @@ const thumbOptions = {
   watchSlidesVisibility: true,
   watchSlidesProgress: true,
 }
-
-onMount(async () => {
-  await tick()
-  swiperTop.thumbs.swiper = swiperThumbs
-})
 </script>
 
 <div class="thumbs-gallery">

@@ -14,6 +14,7 @@
   export let autoDestroy: boolean = true;
   export let deleteInstanceOnDestroy: boolean = true;
   export let cleanupStylesOnDestroy: boolean = true;
+  export let thumbs: Swiper|null = null;
 
   const wrapperClass: string = options.wrapperClass || DEFAULT_CLASSES.wrapperClass;
   const dispatch = createEventDispatcher();
@@ -27,11 +28,9 @@
 
   $: styles = typeof style === 'string' ? style : getStyles(style);
 
-  $: {
-    const instance = swiper as any
-    if (instance && instance.thumbs && instance.thumbs.swiper) {
-      updateSwiper();
-    }
+  $: if (thumbs && swiper && (swiper as any).thumbs && (swiper as any).thumbs.swiper !== thumbs) {
+    (swiper as any).thumbs.swiper = thumbs;
+    updateSwiper();
   }
 
   function bindSwiperEvents () {
