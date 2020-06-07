@@ -41,8 +41,21 @@
     }
   }
 
+  // https://github.com/beomy/svelte-swiper/issues/2
+  function autoReLoopSwiper () {
+    if (swiper && options.loop) {
+      if ((swiper as any).loopDestroy) {
+        (swiper as any).loopDestroy();
+      }
+      if ((swiper as any).loopCreate) {
+        (swiper as any).loopCreate();
+      }
+    }
+  }
+
   function updateSwiper () {
     if (autoUpdate && swiper) {
+      autoReLoopSwiper();
       swiper.update();
       if (swiper.navigation && swiper.navigation.update) {
         swiper.navigation.update();
