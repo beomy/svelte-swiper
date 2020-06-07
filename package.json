@@ -1,6 +1,6 @@
 {
   "name": "svelte-swiper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "swiper.js for svelte",
   "main": "dist/bundle.js",
   "scripts": {
