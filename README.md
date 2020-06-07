@@ -23,6 +23,8 @@ yarn add rollup-plugin-css-only
 
 ```js
 // rollup.config.js
+import css from 'rollup-plugin-css-only'
+
 export default {
   // ...
   plugins: [
@@ -172,3 +174,6 @@ MIT
 
 # Author
 [Hyo Bum Lee](https://beomy.github.io/)
+
+# Known issues
+- [https://github.com/sveltejs/svelte/issues/3964](https://github.com/sveltejs/svelte/issues/3964)

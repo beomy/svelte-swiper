@@ -1,6 +1,6 @@
 <script>
 import { onMount, tick } from 'svelte'
-import { Swiper, SwiperSlide } from '../../dist/bundle';
+import { Swiper, SwiperSlide } from 'svelte-swiper';
 
 let swiperTop;
 let swiperThumbs;

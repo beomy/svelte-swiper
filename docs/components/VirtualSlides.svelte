@@ -1,5 +1,5 @@
 <script>
-import { Swiper, SwiperSlide } from '../../dist/bundle';
+import { Swiper, SwiperSlide } from 'svelte-swiper';
 
 let swiperSlides = [1, 2, 3, 4, 5]
 let appendNumber = 600;

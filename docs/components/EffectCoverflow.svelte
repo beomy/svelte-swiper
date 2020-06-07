@@ -1,5 +1,5 @@
 <script>
-import { Swiper, SwiperSlide } from '../../dist/bundle';
+import { Swiper, SwiperSlide } from 'svelte-swiper';
 
 const options = {
   effect: 'coverflow',
