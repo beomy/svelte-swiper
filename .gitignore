@@ -5,6 +5,7 @@ package-lock.json
 yarn.lock
 docs/node_modules
 docs/package-lock.json
+docs/public/bundle.*
 
 npm-debug.log*
 yarn-debug.log*
