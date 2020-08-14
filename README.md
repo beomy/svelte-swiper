@@ -4,7 +4,7 @@
 - [Demos](https://beomy.github.io/svelte-swiper)
 
 # Install
-This library support Svelte >= 3.0. And use swiper.js > 5.x.
+This library support Svelte >= 3.0. And use swiper.js > 6.x.
 
 ```
 npm install svelte-swiper
@@ -35,7 +35,7 @@ export default {
       }
     }),
     // ...
-    css({ output: 'public/build/assets.css' }),
+    css({ output: 'public/build/swiper-bundle.css' }),
     // ...
   ]
   // ...
@@ -48,7 +48,7 @@ export default {
 <html>
 <head>
   <!-- ... -->
-  <link rel='stylesheet' href='/build/assets.css'>
+  <link rel='stylesheet' href='/build/swiper-bundle.css'>
 </head>
   <!-- ... -->
 </html>
@@ -57,12 +57,12 @@ export default {
 # Usage
 This library need to use `swiper.css`.
 
-`import 'swiper/css/swiper.css';` add in `main.js`:
+`import 'swiper/swiper-bundle.css'` add in `main.js`:
 
 ```js
 // main.js
 import App from './App.svelte';
-import 'swiper/css/swiper.css';
+import 'swiper/swiper-bundle.css'
 
 const app = new App({
 	target: document.body,

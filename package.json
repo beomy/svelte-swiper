@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "description": "swiper.js for svelte",
   "main": "dist/bundle.js",
+  "types": "types",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "validate": "svelte-check"
   },
   "repository": {
     "type": "git",
@@ -25,20 +27,27 @@
   },
   "homepage": "https://github.com/beomy/svelte-swiper#readme",
   "devDependencies": {
-    "@types/swiper": "^5.3.0",
-    "cross-env": "^5.2.0",
-    "serve": "^11.0.0",
-    "style-loader": "^0.23.1",
+    "@tsconfig/svelte": "^1.0.8",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "serve": "^11.3.2",
+    "style-loader": "^1.2.1",
     "svelte": "^3.0.0",
-    "svelte-loader": "2.13.3",
-    "svelte-preprocess": "^3.3.1",
-    "ts-loader": "^7.0.0",
-    "typescript": "^3.8.3",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "svelte-check": "^1.0.14",
+    "svelte-loader": "2.13.6",
+    "svelte-preprocess": "^4.0.0",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "swiper": "^5.3.8"
+    "swiper": "^6.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate"
+    }
   }
 }

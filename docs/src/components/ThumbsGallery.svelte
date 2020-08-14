@@ -1,5 +1,4 @@
 <script>
-import { onMount, tick } from 'svelte'
 import { Swiper, SwiperSlide } from 'svelte-swiper';
 
 let swiperTop;

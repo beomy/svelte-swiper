@@ -13,10 +13,7 @@ const options = {
 }
 
 function getDirection() {
-  const windowWidth = window.innerWidth;
-  const direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-  return direction;
+  return window.innerWidth <= 760 ? 'vertical' : 'horizontal';;
 }
 </script>
 

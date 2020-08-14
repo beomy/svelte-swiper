@@ -1,5 +1,3 @@
-import { CommonEvent } from 'swiper'
-
 export const DEFAULT_CLASSES = Object.freeze({
   containerClass: 'swiper-container',
   wrapperClass: 'swiper-wrapper',
@@ -7,7 +5,7 @@ export const DEFAULT_CLASSES = Object.freeze({
 })
 
 // https://swiperjs.com/api/#events
-export const SWIPER_EVENTS: CommonEvent[] = [
+export const SWIPER_EVENTS: string[] = [
   'init',
   'beforeDestroy',
   'slideChange',
@@ -35,7 +33,8 @@ export const SWIPER_EVENTS: CommonEvent[] = [
   'setTranslate',
   'setTransition',
   'resize',
-  'observerUpdate' as CommonEvent,
-  'beforeLoopFix' as CommonEvent,
-  'loopFix' as CommonEvent
+  'observerUpdate',
+  'beforeLoopFix',
+  'loopFix',
+  'breakpoint'
 ]

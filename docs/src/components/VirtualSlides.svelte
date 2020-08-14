@@ -1,7 +1,6 @@
 <script>
-import { Swiper, SwiperSlide } from 'svelte-swiper';
+import { Swiper } from 'svelte-swiper';
 
-let swiperSlides = [1, 2, 3, 4, 5]
 let appendNumber = 600;
 let prependNumber = 1;
 let swiper;

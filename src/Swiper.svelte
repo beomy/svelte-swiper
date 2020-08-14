@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount, afterUpdate, onDestroy, tick, setContext, createEventDispatcher } from 'svelte';
-  import Swiper, { SwiperOptions } from 'swiper';
+  import Swiper from 'swiper/bundle';
+  import type { SwiperOptions } from 'swiper';
   import { key } from './context';
   import { getStyles } from './utils';
   import { DEFAULT_CLASSES, SWIPER_EVENTS } from './constants';
@@ -8,7 +9,7 @@
   export let options: SwiperOptions = {};
   export let swiper: Swiper|null = null;
   export let className: string|string[] = '';
-  export let style: string|object = '';
+  export let style: string|{ [x: string]: string } = '';
   export let dir: string|null = null;
   export let autoUpdate: boolean = true;
   export let autoDestroy: boolean = true;

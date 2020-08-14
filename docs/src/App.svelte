@@ -51,6 +51,7 @@ const components = [
   { comp: PaginationDynamic, link: 'PaginationDynamic', title: 'Pagination / Dynamic Bullets' },
   { comp: PaginationProgress, link: 'PaginationProgress', title: 'Progress Pagination' },
   { comp: PaginationFraction, link: 'PaginationFraction', title: 'Fraction Pagination' },
+  { comp: PaginationCustom, link: 'PaginationCustom', title: 'Pagination Custom' },
   { comp: Scrollbar, link: 'Scrollbar', title: 'Scrollbar' },
   { comp: Vertical, link: 'Vertical', title: 'Vertical Slider' },
   { comp: SpaceBetween, link: 'SpaceBetween', title: 'Space Between Slides' },

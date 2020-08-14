@@ -1,16 +1,18 @@
 <script lang="ts">
   import { afterUpdate, getContext } from 'svelte';
-  import Swiper, { SwiperOptions } from 'swiper';
+  import type Swiper from 'swiper';
+  import type { SwiperOptions } from 'swiper';
   import { key } from './context';
+  import type { IContext } from './context';
   import { getStyles } from './utils';
   import { DEFAULT_CLASSES } from './constants';
 
   export let className: string|string[] = '';
-  export let style: string|object = '';
+  export let style: string|{ [x: string]: string } = '';
   export let hash: string|null = null;
   export let history: string|null = null;
 
-  const context = getContext(key);
+  const context: IContext = getContext(key);
   const options: SwiperOptions = context.options;
   const slideClass: string = options.slideClass || DEFAULT_CLASSES.slideClass;
   let classes: string;
