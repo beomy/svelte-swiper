@@ -1,4 +1,2 @@
-import { SvelteComponent } from "svelte/internal";
-
-declare const swiper: SvelteComponent;
+declare const swiper: any;
 export default swiper;
